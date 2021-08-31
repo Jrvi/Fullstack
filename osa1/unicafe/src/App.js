@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 
-//TODO: korjaa tämä funktio
 const Statistics = (props) => {
   if (props.statictics.all === 0) {
     return (
