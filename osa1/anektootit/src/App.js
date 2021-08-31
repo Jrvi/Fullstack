@@ -2,7 +2,10 @@ import React, { useState } from 'react'
 
 const Display = (props) => {
   return (
-    <div>{props.text}</div>
+    <div>
+      {props.text} <br />
+      has {props.points} votes
+    </div>
   )
 }
 
@@ -18,14 +21,22 @@ const App = () => {
   ]
    
   const [selected, setSelected] = useState(0)
+  const [points, setPoints] = useState([0, 0, 0, 0, 0, 0, 0])
 
   const randomAnectode = () => {
     setSelected(Math.floor(Math.random()*anecdotes.length))
   }
 
+  const handleVote = () => {
+      const copy = [...points]
+      copy[selected] += 1
+      setPoints(copy)
+  }
+
   return (
     <div>
-      <Display text={anecdotes[selected]}/>
+      <Display text={anecdotes[selected]} points={points[selected]}/>
+      <button onClick={handleVote}>vote</button>
       <button onClick={randomAnectode}>next anectode</button>
     </div>
   )
