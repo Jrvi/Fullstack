@@ -1,28 +1,32 @@
 import React, { useState } from 'react'
 
-const App = () => {
-  /* tallenna napit omaan tilaansa
-  const [good, setGood] = useState(0)
-  const [neutral, setNeutral] = useState(0)
-  const [bad, setBad] = useState(0) */
-
-  const [feedback, setFeedback] = useState({good: 0, neutral: 0, bad: 0})
-  const [statictics, setStatictics] = useState({all: 0, average: 0, positive: 0})
-
-const Display = () => {
+//TODO: korjaa tämä funktio
+const Statistics = (props) => {
   return (
     <div>
+      <h1>statictics</h1>
       <p>
-        good {feedback.good} <br/>
-        neutral {feedback.neutral} <br/>
-        bad {feedback.bad} <br/>
-        all {statictics.all} <br/>
-        average {statictics.average} <br/>
-        positive {statictics.positive} % <br/>
+        good {props.feedback.good} <br/>
+        neutral {props.feedback.neutral} <br/>
+        bad {props.feedback.bad} <br/>
+        all {props.statictics.all} <br/>
+        average {props.statictics.average} <br/>
+        positive {props.statictics.positive} % <br/>
         </p>
     </div>
   )
 }
+
+const Button = (props) => {
+  return (
+    <button onClick={props.handleClick}>{props.text}</button>
+  )
+}
+
+const App = () => {
+
+  const [feedback, setFeedback] = useState({good: 0, neutral: 0, bad: 0})
+  const [statictics, setStatictics] = useState({all: 0, average: 0, positive: 0})
 
 const handleStatictics = (props) => {
   const newStatictics = {
@@ -66,11 +70,10 @@ const handleBad = () => {
   return (
     <div>
       <h1>give feedback</h1>
-      <button onClick={handleGood}>good</button>
-      <button onClick={handleNeutral}>neutral</button>
-      <button onClick={handleBad}>bad</button>
-      <h1>statictics</h1>
-      <Display/>
+      <Button handleClick={handleGood} text='good' />
+      <Button handleClick={handleNeutral} text='neutral'/>
+      <Button handleClick={handleBad} text='bad' />
+      <Statistics feedback={feedback} statictics={statictics}/>
     </div>
   )
 }
