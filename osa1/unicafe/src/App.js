@@ -2,19 +2,28 @@ import React, { useState } from 'react'
 
 //TODO: korjaa tämä funktio
 const Statistics = (props) => {
-  return (
-    <div>
-      <h1>statictics</h1>
-      <p>
-        good {props.feedback.good} <br/>
-        neutral {props.feedback.neutral} <br/>
-        bad {props.feedback.bad} <br/>
-        all {props.statictics.all} <br/>
-        average {props.statictics.average} <br/>
-        positive {props.statictics.positive} % <br/>
-        </p>
-    </div>
-  )
+  if (props.statictics.all === 0) {
+    return (
+      <div>
+        <h1>statictics</h1>
+        <p>no feedback given</p>
+      </div>
+    )
+  } else {
+    return (
+      <div>
+        <h1>statictics</h1>
+        <p>
+          good {props.feedback.good} <br/>
+          neutral {props.feedback.neutral} <br/>
+          bad {props.feedback.bad} <br/>
+          all {props.statictics.all} <br/>
+          average {props.statictics.average} <br/>
+          positive {props.statictics.positive} % <br/>
+          </p>
+      </div>
+    )
+  }
 }
 
 const Button = (props) => {
