@@ -9,6 +9,22 @@ const Display = (props) => {
   )
 }
 
+const DisplayMostVoted = (props) => {
+
+  const arrayMaxIndex = function(array) {
+    return array.indexOf(Math.max.apply(null, array));
+  }
+
+  const mostVoted = arrayMaxIndex(props.points)
+
+  return (
+    <div>
+      {props.anecdotes[mostVoted]} <br />
+      has {props.points[mostVoted]} votes
+    </div>
+  )
+}
+
 const App = () => {
   const anecdotes = [
     'If it hurts, do it more often.',
@@ -35,9 +51,12 @@ const App = () => {
 
   return (
     <div>
+      <h1>Anectode of the day</h1>
       <Display text={anecdotes[selected]} points={points[selected]}/>
       <button onClick={handleVote}>vote</button>
       <button onClick={randomAnectode}>next anectode</button>
+      <h1>Anectode with most votes</h1>
+      <DisplayMostVoted anecdotes={anecdotes} points={points}/>
     </div>
   )
 }
