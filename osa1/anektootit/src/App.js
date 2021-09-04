@@ -4,18 +4,14 @@ const Display = (props) => {
   return (
     <div>
       {props.text} <br />
-      has {props.points} votes
+      has {props.points} votes 
     </div>
   )
 }
 
 const DisplayMostVoted = (props) => {
 
-  const arrayMaxIndex = function(array) {
-    return array.indexOf(Math.max.apply(null, array));
-  }
-
-  const mostVoted = arrayMaxIndex(props.points)
+  const mostVoted = props.points.indexOf(Math.max.apply(null, props.points))
 
   return (
     <div>
