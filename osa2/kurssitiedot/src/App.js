@@ -18,11 +18,11 @@ const Content = (props) => {
 
 const Total = (parts) => {
 
-  console.log(parts.parts[0].exercises);
+  const sum = parts.parts.map(total => total.exercises).reduce((a, b) => a + b)
 
   return (
     <div>
-      <b>Total of 0 exercises</b>
+      <b>Total of {sum} exercises</b>
     </div>
   )
 }
