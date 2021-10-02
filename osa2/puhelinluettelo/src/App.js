@@ -6,7 +6,19 @@ const Person = (props) => {
   )
 }
 
+const Filter = (props) => {
+
+  return (
+    <form>
+        <div>
+          filter shown with <input value={props.showAll} onChange={props.handle}/>
+        </div>
+      </form>
+  )
+}
+
 const App = () => {
+
   const [ persons, setPersons] = useState([
     { name: 'Arto Hellas', number: '040-123456' },
     { name: 'Ada Lovelace', number: '39-44-5323523' },
@@ -61,11 +73,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
-      <form>
-        <div>
-          filter shown with <input value={showAll} onChange={handleShowAllChange}/>
-        </div>
-      </form>
+      <Filter showAll={showAll} handle={handleShowAllChange}/>
       <h2>Add a new</h2>
       <form onSubmit={addName}>
         <div>
